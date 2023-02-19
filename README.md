@@ -1,2 +1,2 @@
 # fswd
-this is the folder that contins code during live session fswd-5
+furniture parts of websites
