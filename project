@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bmi calculator</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <section class="container maintain">
+        <div class="card cards">
+            <div>
+                <label for="height">height:</label>
+                <input type="number" name="height" id="height" placeholder="centimeters">
+            </div>
+            <div>
+                <label for="weight">weight:</label>
+                <input type="number" name="weight" id="weight" placeholder="kilograms">
+            </div><br>
+       
+            <div class="submited">
+                <button type="submit" id="calc" onclick="calculation()">calculate BMI</button>
+            </div>
+            <div>
+                <h2 id="result"></h2>
+                <p id="info"></p>
+            </div>
+                <div class="back"><button type="submit"><a href="./index.html">back</a></button></div>
+        </div>
+    </section>
+    <script src="./bmi.js"></script>
+</body>
+</html>
+
+
+<script>
+var calc = document.getElementById('calc');
+calc.addEventListener("click", calculation);
+var back = document.querySelector('.back');
+back.style.display = "none";
+
+function calculation(){
+
+    var height = document.getElementById('height').value;
+    var weight = document.getElementById('weight').value;
+    
+    if(height > 200 || weight > 150){
+
+    alert("you must reduce your weight")
+   }
+
+   else{
+
+     var meter = height/100;
+     var bmiResult = weight/(meter*meter);
+     document.getElementById('result').innerHTML = "result is "+bmiResult.toFixed(2);
+     back.style.display = "block";
+
+   }
+
+   if(bmiResult < 16.0 || bmiResult > 40.0){
+
+    document.getElementById('info').innerHTML = "not a human!";
+   }
+
+   else if(bmiResult < 18.5 ){
+
+    document.getElementById('info').innerHTML = "your underweight";
+   }
+
+   if(bmiResult > 25.0){
+
+    document.getElementById('info').innerHTML = "your normal";
+   }
+
+   if(bmiResult > 40.0){
+
+    document.getElementById('info').innerHTML = "your overweight";
+   }
+}
+</script>
